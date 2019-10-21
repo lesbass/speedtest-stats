@@ -1,0 +1,32 @@
+﻿@model List<StatRow>
+
+@{
+    ViewData["Title"] = "Home Page";
+}
+
+<div class="text-center">
+    <h1 class="display-4">@ViewBag.ProcTime ms</h1>
+    <p>@Model.Count elementi totali</p>
+</div>
+
+<table style="width: 100%">
+    <thead>
+    <tr>
+        <th>Data e Ora</th>
+        <th>Ping</th>
+        <th>Download</th>
+        <th>Upload</th>
+    </tr>
+    </thead>
+    <tbody>
+    @foreach (var item in Model.OrderByDescending(x => x.DataOra).Take(200))
+    {
+        <tr>
+            <td>@item.DataOra</td>
+            <td>@item.Ping ms</td>
+            <td>@item.Download Mbit/s</td>
+            <td>@item.Upload Mbit/s</td>
+        </tr>
+    }
+    </tbody>
+</table>
