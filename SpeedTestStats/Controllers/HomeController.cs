@@ -5,6 +5,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
+using SpeedTestStats.BL;
 using SpeedTestStats.Models;
 
 namespace SpeedTestStats.Controllers
@@ -12,10 +13,12 @@ namespace SpeedTestStats.Controllers
   public class HomeController : Controller
   {
     private readonly ILogger<HomeController> _logger;
+    private readonly StatsReader _statsReader;
 
     public HomeController(ILogger<HomeController> logger)
     {
       _logger = logger;
+      _statsReader = new StatsReader();
     }
 
     public IActionResult Index()
@@ -25,7 +28,7 @@ namespace SpeedTestStats.Controllers
       for (var i = 0; i < 1; i++)
       {
         var t = DateTime.Now;
-        item = StatsReader.Get();
+        item = _statsReader.Get();
 
         tempi.Add(DateTime.Now.Subtract(t).TotalMilliseconds);
       }
