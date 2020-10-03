@@ -3,8 +3,6 @@ using System.Collections.Generic;
 using System.Globalization;
 using System.IO;
 using System.Linq;
-using System.Text;
-using System.Text.RegularExpressions;
 using Core.Common;
 
 namespace SpeedTestStats.BL
@@ -17,10 +15,10 @@ namespace SpeedTestStats.BL
     {
       _utilityManager = new Utility();
     }
-    
+
     public List<StatRow> Get()
     {
-      var filePath = @"\\192.168.1.254\Public\speed_log.txt";
+      var filePath = @"\\wdmycloud\Public\speed_log.txt";
       var content = File.ReadAllLines(filePath);
       var response = new List<StatRow>();
 

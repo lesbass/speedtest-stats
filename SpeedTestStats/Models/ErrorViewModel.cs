@@ -1,5 +1,3 @@
-using System;
-
 namespace SpeedTestStats.Models
 {
   public class ErrorViewModel

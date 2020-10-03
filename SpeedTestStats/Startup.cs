@@ -1,9 +1,5 @@
-using System;
-using System.Collections.Generic;
 using System.Globalization;
-using System.Linq;
 using System.Threading;
-using System.Threading.Tasks;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.Extensions.Configuration;
@@ -31,13 +27,9 @@ namespace SpeedTestStats
     public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
     {
       if (env.IsDevelopment())
-      {
         app.UseDeveloperExceptionPage();
-      }
       else
-      {
         app.UseExceptionHandler("/Home/Error");
-      }
       app.UseStaticFiles();
 
       app.UseRouting();
@@ -47,8 +39,8 @@ namespace SpeedTestStats
       app.UseEndpoints(endpoints =>
       {
         endpoints.MapControllerRoute(
-                  name: "default",
-                  pattern: "{controller=Home}/{action=Index}/{id?}");
+          "default",
+          "{controller=Home}/{action=Index}/{id?}");
       });
 
       Thread.CurrentThread.CurrentCulture = new CultureInfo("it-IT");
