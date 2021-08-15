@@ -1,18 +1,18 @@
-﻿@model List<StatRow>
+﻿@model List<SpeedTestStats.BL.StatRow>
 
 @{
+    Layout = "_Layout";
     ViewData["Title"] = "Home Page";
 }
 
 <div class="text-center">
-    <h1 class="display-4">@ViewBag.ProcTime ms</h1>
-    <p>@Model.Count elementi totali</p>
+    <p>@Model.Count total count</p>
 </div>
 
 <table style="width: 100%">
     <thead>
     <tr>
-        <th>Data e Ora</th>
+        <th>Time</th>
         <th>Ping</th>
         <th>Download</th>
         <th>Upload</th>
@@ -29,4 +29,12 @@
         </tr>
     }
     </tbody>
+    <tfoot>
+    <tr>
+        <th>Avg.</th>
+        <th>@((Model.Select(x => x.Ping).Average() ?? 0).ToString("N"))</th>
+        <th>@(Model.Select(x => x.Download).Average().ToString())</th>
+        <th>@(Model.Select(x => x.Upload).Average().ToString())</th>
+    </tr>
+    </tfoot>
 </table>

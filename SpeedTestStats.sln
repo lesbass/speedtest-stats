@@ -5,9 +5,7 @@ VisualStudioVersion = 16.0.29411.108
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "SpeedTestStats", "SpeedTestStats\SpeedTestStats.csproj", "{A0DA248D-ACA2-4BA6-9789-CDE1FDC2B672}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SpeedTestStats.BL", "SpeedTestStats.BL\SpeedTestStats.BL.csproj", "{F1D5E6BD-7AD7-4ECA-95BB-5F12DCF4001B}"
-EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Core.Common", "Core.Common\Core.Common.csproj", "{10E09483-7E30-4E34-893F-40698DE23378}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "SpeedTestStats.BL", "SpeedTestStats.BL\SpeedTestStats.BL.csproj", "{F1D5E6BD-7AD7-4ECA-95BB-5F12DCF4001B}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -23,10 +21,6 @@ Global
 		{F1D5E6BD-7AD7-4ECA-95BB-5F12DCF4001B}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{F1D5E6BD-7AD7-4ECA-95BB-5F12DCF4001B}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{F1D5E6BD-7AD7-4ECA-95BB-5F12DCF4001B}.Release|Any CPU.Build.0 = Release|Any CPU
-		{10E09483-7E30-4E34-893F-40698DE23378}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{10E09483-7E30-4E34-893F-40698DE23378}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{10E09483-7E30-4E34-893F-40698DE23378}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{10E09483-7E30-4E34-893F-40698DE23378}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
