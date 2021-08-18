@@ -4,6 +4,9 @@ using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
+using SpeedTestStats.BL;
+using SpeedTestStats.BL.Interfaces;
+using SpeedTestStats.BL.Models;
 
 namespace SpeedTestStats
 {
@@ -20,6 +23,8 @@ namespace SpeedTestStats
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddControllersWithViews();
+            services.AddSingleton<IGlobalSettings>(Configuration.GetSection("Settings").Get<GlobalSettings>());
+            services.AddSingleton<IStatsReader, StatsReader>();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

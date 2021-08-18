@@ -3,24 +3,40 @@ using System.Collections.Generic;
 using System.Globalization;
 using System.IO;
 using System.Linq;
+using System.Net;
 using System.Text;
 using System.Text.RegularExpressions;
+using SpeedTestStats.BL.Interfaces;
+using SpeedTestStats.BL.Models;
 
 namespace SpeedTestStats.BL
 {
-    public class StatsReader
+    public class StatsReader : IStatsReader
     {
+        private readonly IGlobalSettings _globalSettings;
+
+        public StatsReader(IGlobalSettings globalSettings)
+        {
+            _globalSettings = globalSettings;
+        }
+
+        private string DownloadRemoteFile()
+        {
+            var webClient = new WebClient();
+            return webClient.DownloadString(_globalSettings.SpeedStatsUrl);
+        }
+
         public List<StatRow> Get()
         {
-            var filePath = @"\\wdmycloud\Public\speed_log.txt";
-            var content = File.ReadAllLines(filePath);
+            var content = DownloadRemoteFile();
             var response = new List<StatRow>();
 
             var tempData = default(DateTime);
             decimal? tempPing = null;
             decimal? tempUpload = null;
             decimal? tempDownload = null;
-            foreach (var item in content)
+            var responseRows = content.Split(new[] {'\r', '\n'});
+            foreach (var item in responseRows)
                 try
                 {
                     if (item.StartsWith("--"))
@@ -76,7 +92,7 @@ namespace SpeedTestStats.BL
                         }
                     }
                 }
-                catch (Exception e)
+                catch
                 {
                     Console.WriteLine(item);
                 }

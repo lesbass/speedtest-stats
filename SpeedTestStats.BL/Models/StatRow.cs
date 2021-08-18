@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace SpeedTestStats.BL
+namespace SpeedTestStats.BL.Models
 {
   public class StatRow
   {

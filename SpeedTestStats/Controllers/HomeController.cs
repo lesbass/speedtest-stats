@@ -3,16 +3,18 @@ using System.Collections.Generic;
 using System.Linq;
 using Microsoft.AspNetCore.Mvc;
 using SpeedTestStats.BL;
+using SpeedTestStats.BL.Interfaces;
+using SpeedTestStats.BL.Models;
 
 namespace SpeedTestStats.Controllers
 {
     public class HomeController : Controller
     {
-        private readonly StatsReader _statsReader;
+        private readonly IStatsReader _statsReader;
 
-        public HomeController()
+        public HomeController(IStatsReader statsReader)
         {
-            _statsReader = new StatsReader();
+            _statsReader = statsReader;
         }
 
         public IActionResult Index()
