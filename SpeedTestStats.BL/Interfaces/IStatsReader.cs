@@ -5,6 +5,6 @@ namespace SpeedTestStats.BL.Interfaces
 {
     public interface IStatsReader
     {
-        List<StatRow> Get();
+        IEnumerable<StatRow> GetRows();
     }
 }

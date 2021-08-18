@@ -1,4 +1,4 @@
-﻿@model List<SpeedTestStats.BL.Models.StatRow>
+﻿@model IEnumerable<SpeedTestStats.BL.Models.StatRow>
 
 @{
     Layout = "_Layout";
@@ -6,7 +6,7 @@
 }
 
 <div class="text-center">
-    <p>@Model.Count total count</p>
+    <p>@Model.Count() total count</p>
 </div>
 
 <table style="width: 100%">
@@ -19,7 +19,7 @@
     </tr>
     </thead>
     <tbody>
-    @foreach (var item in Model.OrderByDescending(x => x.DataOra).Take(200))
+    @foreach (var item in Model.OrderByDescending(x => x.DataOra))
     {
         <tr>
             <td>@item.DataOra</td>
@@ -32,9 +32,9 @@
     <tfoot>
     <tr>
         <th>Avg.</th>
-        <th>@((Model.Select(x => x.Ping).Average() ?? 0).ToString("N"))</th>
-        <th>@(Model.Select(x => x.Download).Average().ToString())</th>
-        <th>@(Model.Select(x => x.Upload).Average().ToString())</th>
+        <th>@((Model.Select(x => x.Ping).Average() ?? 0).ToString("N")) ms</th>
+        <th>@((Model.Select(x => x.Download).Average() ?? 0).ToString("N")) Mbit/s</th>
+        <th>@((Model.Select(x => x.Upload).Average() ?? 0).ToString("N")) Mbit/s</th>
     </tr>
     </tfoot>
 </table>
